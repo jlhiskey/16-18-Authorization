@@ -1,49 +1,29 @@
-![CF](http://i.imgur.com/7v5ASc8.png) 16: Basic Auth
-===
+[![Build Status](https://travis-ci.com/jlhiskey/code-challenge.svg?branch=master)](https://travis-ci.com/jlhiskey/16-18-Authorization)
+======
+![cf](https://i.imgur.com/7v5ASc8.png) JavaScript-401d26
+=======
+## Express-API with Basic User Auth
+ This application allows you to create, request, modify and delete entries in the grocery list api which stores your grocery list using mongo db with mongoose serving as the API's ODM . It also implements an account creation which uses Basic Auth procedures to create an account with hashed password storage and token creation
 
-## Submission Instructions
-  * Follow the lab submission instructions in the reference folder 
+## Getting Started
+- Fork this repository: https://github.com/jlhiskey/16-18-Authorization
+- Clone this repository onto your local device.
+- The local repository should now contain a folder structure that matches the one shown below.
+    - lib/ : contains module definitions
+    - data/ : contains the text files used by the program
+    - __tests__/ : contains unit tests
+ - Now in your terminal you will need to install dependencies using 
+the command:  npm i 
+    - This will create a package.json file on your local device.
+- To run test open your terminal use the command: npm run test
 
-## Learning Objectives  
-* students will be able to create basic authorization middleware
-* students will be able to test basic authorization for signup/signin routes
+## Error Handling
+- If users request doesn't contain a title or content then the application will send a 400 status.
+- If user makes a request that isn't fullfilleable by the server then the application will send a 404 status.   
 
-## Requirements
+## Author 
+- Jason Hiskey
 
-## Feature Tasks
-
-* create an HTTP server using `express`
-* using `mongoose`, create an **Account** model with the following properties and options:
-  * `username` - *required and unique*
-  * `email` - *required and unique*
-  * `password` - *required - this must be hashed and can not stored as plain text*
-* use the **npm** `debug` module to log function calls that are used within your application
-* use the **express** `Router` to create a custom router for allowing users to **sign up** and **sign in**
-* use the **npm** `dotenv` module to house the following environment variables:
-  * `PORT`
-  * `MONGODB_URI`
-  * `APP_SECRET` *(used for signing and verify tokens)*
-
-## Server Endpoints
-### `/api/signup`
-* `POST` request
-* the client should pass the username and password in the body of the request
-* the server should respond with a token (generated using `jwt`)
-* the server should respond with **400 Bad Request** to a failed request
-
-### `/api/signin`
-* `GET` request
-* the client should pass the username and password to the server using a `Basic:` authorization header
-* use middleware to parse the auth header for username/password
-* perform some basic validation
-* the server should respond with a token for authenticated users
-* the server should respond with **401 Unauthorized** for non-authenticated users
-
-## Tests
-* create a test that will ensure that your API returns a status code of **404** for any routes that have not been registered
-* `/api/signup`
-* `POST` - test **400**, if no request body has been provided or the body is invalid
-* `POST` - test **200**, if the request body has been provided and is valid
-* `/api/signin`
-* `GET` - test **401**, if the user could not be authenticated
-* `GET` - test **200**, responds with token for a request with a valid basic authorization header
+## License 
+- This project is licensed under the MIT License.
+ 
