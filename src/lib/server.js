@@ -4,11 +4,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const logger = require('./logger');
+
+// ----- Middleware--------------------------------------------------------------------------------
 const loggerMiddleware = require('./logger-middleware');
 const errorMiddleware = require('./error-middleware');
+
+// ----- Routers-----------------------------------------------------------------------------------
 const groceryListRoutes = require('../routes/grocery-list-router');
 const groceryListItemRoutes = require('../routes/grocery-list-item-router');
 const authRoutes = require('../routes/auth-router');
+const pictureRoutes = require('../routes/picture-router');
 
 //! Jason- Injects express wizardry into the application
 const app = express();
@@ -19,6 +24,7 @@ app.use(loggerMiddleware);
 app.use(groceryListRoutes);
 app.use(groceryListItemRoutes);
 app.use(authRoutes);
+app.use(pictureRoutes);
 
 
 app.all('*', (request, response) => {

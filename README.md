@@ -2,8 +2,8 @@
 ======
 ![cf](https://i.imgur.com/7v5ASc8.png) JavaScript-401d26
 =======
-## Express-API with Basic User Auth
- This application allows you to create, request, modify and delete entries in the grocery list api which stores your grocery list using mongo db with mongoose serving as the API's ODM . It also implements an account creation which uses Basic Auth procedures to create an account with hashed password storage and token creation
+## Express-API with Basic User Auth and Bearer Auth Route
+ This application allows you to create, request, modify and delete entries in the grocery list api which stores your grocery list using mongo db with mongoose serving as the API's ODM . It also implements an account creation which uses Basic Auth procedures to create an account with hashed password storage and token creation. Also created a bearer auth route that can only be accessed after account creation and sign in.
 
 ## Getting Started
 - Fork this repository: https://github.com/jlhiskey/16-18-Authorization
