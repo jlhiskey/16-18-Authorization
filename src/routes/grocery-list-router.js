@@ -56,7 +56,7 @@ router.put('/api/grocery-list/:id', jsonParser, (request, response, next) => {
         throw HttpError(400, 'body is required');
       }
       if (!groceryList) {
-        throw HttpError(404, 'synth not found');
+        throw HttpError(404, 'grocery list not found');
       }
       if (request.body.title) {
         groceryList.set({
