@@ -1,6 +1,6 @@
 'use strict';
 
-const faker = require('faker');
+// const faker = require('faker');
 const superagent = require('superagent');
 const server = require('../lib/server');
 const accountMock = require('./lib/account-mock');
@@ -14,15 +14,13 @@ describe('/api/pictures', () => {
 
   // -----API/PICTURE ROUTES------------------------------------------------------------------------
   // -----POST SUCCESS TEST----------
-  test('Should respond with 200 status code and a picture', () => {
+  test('should respond with 200 status code and a picture', () => {
     return accountMock.pCreateMock()
       .then((mock) => {
         return superagent.post(API_URL)
           .set('Authorization', `Bearer ${mock.token}`)
-          .send({
-            title: faker.lorem.words(3),
-            url: faker.internet.url(),
-          });
+          .field('title', 'Admiral Ackbar, the admiral that states the obvious')
+          .attach('picture', `${__dirname}/assets/itsatrap.jpg`);
       })
       .then((response) => {
         expect(response.status).toEqual(200);
